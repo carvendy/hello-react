@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js"></script>
+    <script src="../build/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+      class LikeButton extends React.Component {
+
+        constructor(props) {
+          super(props)
+          // 存储位置
+          this.state = {
+            liked: false,
+            lights:['red','green','yellow'],
+            light:'',
+            count: -1
+          }
+          this.handleClick = this.handleClick.bind(this)
+        }
+        handleClick(event) {
+          this.state.count ++;
+          var index = this.state.count % 3;
+          // 算法自定义
+           this.setState({ light:  this.state.lights[index]});
+        }
+        // 会重新渲染
+        render() {
+          var light = this.state.light;
+          var text = this.state.liked ? 'like' : 'haven\'t liked';
+          return (
+            <p onClick={this.handleClick} style={{color:light}}>
+              You {text} this. Click to toggle.
+            </p>
+          );
+        }
+      }
+
+      ReactDOM.render(
+        <LikeButton />,
+        document.getElementById('example')
+      );
+    </script>
+  </body>
+</html>
+

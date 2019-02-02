@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js"></script>
+    <script src="../build/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <!-- https://reactjs.org/docs/refs-and-the-dom.html#callback-refs -->
+    <script type="text/babel">
+      class MyComponent extends React.Component {
+        constructor(props) {
+          super(props);
+          this.myTextInput = React.createRef();  // 文本框，引用
+          this.handleClick2 = this.handleClick2.bind(this) //绑定事件
+        }
+
+        // 自定义
+        handleClick2() {
+          this.myTextInput.current.focus();
+          console.log(this.myTextInput.current.value);
+        }
+
+        render() {
+          return (
+            <div>
+              <input type="text" ref={this.myTextInput} />
+              <input type="button" value="Focus the text input" onClick={this.handleClick2} />
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(
+        <MyComponent />,
+        document.getElementById('example')
+      );
+    </script>
+  </body>
+</html>
