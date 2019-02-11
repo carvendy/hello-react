@@ -7,7 +7,7 @@
     <script src="../build/babel.min.js"></script>
   </head>
   <body>
-    <div id="example"></div>
+    <div id="root"></div>
     <script type="text/babel">
         function formatDate(date) {
             return date.toLocaleDateString();
@@ -29,7 +29,7 @@
                 </div>
                 <div className="Comment-text">{props.text}</div>
                 <div className="Comment-date">
-                    我使用方法{formatDate(props.date)}
+                    {'used method ' + formatDate(props.date)}
                 </div>
                 </div>
             );
