@@ -23,6 +23,7 @@
 
         componentDidMount() {
           console.log("componentDidMount...")
+          
           // 响应后赋值
           this.props.promise.then(
             value => this.setState({loading: false, data: value}),
