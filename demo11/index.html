@@ -12,7 +12,9 @@
     <script type="text/babel">
       class UserGist extends React.Component {
         constructor(props) {
+         // 静态不变数据
           super(props)
+          // 状态机，存储不断变化的状态
           this.state = {
             username: '',
             lastGistUrl: ''
@@ -24,6 +26,8 @@
             this.props.source, 
             function(result) {
               var lastGist = result[0];
+
+              // 多个值
               this.setState({
                 username: lastGist.owner.login,
                 lastGistUrl: lastGist.html_url
@@ -32,7 +36,7 @@
         }
 
         render() {
-          // 
+          // 重新渲染组件
           return (
             <div>
               {this.state.username}'s last gist is <a href={this.state.lastGistUrl}>here</a>.

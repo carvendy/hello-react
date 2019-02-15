@@ -19,6 +19,7 @@
         }
         // 事件绑定
         handleChange(event) {
+          // 单值更新，多个组件需要如何设置(才会便捷？)
           this.setState({ value: event.target.value });
         }
         render() {
